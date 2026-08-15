@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        /* General mobile improvements */
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Mobile screen */
+        @media (max-width: 576px) {
+
+            .container {
+                margin-top: 2rem !important;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            /* Main heading */
+            .display-4 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+
+            .lead {
+                font-size: 1rem;
+            }
+
+            /* Statistics cards */
+            .row.g-4 {
+                margin-bottom: 2rem !important;
+            }
+
+            .card-body {
+                padding: 1.25rem;
+            }
+
+            /* Quick Actions */
+            .btn-lg {
+                width: 100%;
+                margin: 0 !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="bg-light">
+
+
+<div class="container mt-5">
+
+
+    <!-- Header -->
+
+    <div class="text-center mb-5">
+
+        <h1 class="display-4 fw-bold text-primary">
+
+            Student Management System
+
+        </h1>
+
+        <p class="lead text-muted">
+
+            Manage student records easily and efficiently
+
+        </p>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <div class="row g-4 mb-5">
+
+
+        <!-- Total Students -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm text-center h-100">
+
+                <div class="card-body">
+
+                    <h5 class="card-title text-primary">
+
+                        Total Students
+
+                    </h5>
+
+                    <h2 class="display-5 fw-bold"
+                        th:text="${totalStudents}">
+
+                        0
+
+                    </h2>
+
+                    <p class="text-muted mb-0">
+
+                        Registered Students
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Male Students -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm text-center h-100">
+
+                <div class="card-body">
+
+                    <h5 class="card-title text-info">
+
+                        Male Students
+
+                    </h5>
+
+                    <h2 class="display-5 fw-bold"
+                        th:text="${maleStudents}">
+
+                        0
+
+                    </h2>
+
+                    <p class="text-muted mb-0">
+
+                        Male Students
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Female Students -->
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm text-center h-100">
+
+                <div class="card-body">
+
+                    <h5 class="card-title text-danger">
+
+                        Female Students
+
+                    </h5>
+
+                    <h2 class="display-5 fw-bold"
+                        th:text="${femaleStudents}">
+
+                        0
+
+                    </h2>
+
+                    <p class="text-muted mb-0">
+
+                        Female Students
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Quick Actions -->
+
+    <div class="card shadow-sm">
+
+        <div class="card-body text-center">
+
+            <h3 class="mb-4">
+
+                Quick Actions
+
+            </h3>
+
+
+            <div class="d-grid gap-2 d-sm-flex justify-content-center">
+
+                <a href="/add-student"
+                   class="btn btn-success btn-lg">
+
+                    + Add New Student
+
+                </a>
+
+                <a href="/students"
+                   class="btn btn-primary btn-lg">
+
+                    View All Students
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

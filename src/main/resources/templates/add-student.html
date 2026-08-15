@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title th:text="${student.id == null ? 'Add Student' : 'Edit Student'}">
+        Student
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        body {
+            background-color: #f5f7fb;
+        }
+
+        .page-title {
+            color: #0d6efd;
+            font-weight: 700;
+        }
+
+        .form-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .card-header-custom {
+            background-color: #0d6efd;
+            color: white;
+            padding: 18px 25px;
+        }
+
+        .section-title {
+            color: #0d6efd;
+            font-weight: 600;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        .required {
+            color: #dc3545;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 7px;
+            padding: 10px 12px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+        }
+
+        .action-buttons {
+            border-top: 1px solid #dee2e6;
+            margin-top: 25px;
+            padding-top: 20px;
+        }
+
+        .edit-badge {
+            background-color: #ffc107;
+            color: #212529;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container py-5">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h1 class="page-title mb-1"
+                th:text="${student.id == null ? 'Add New Student' : 'Edit Student'}">
+                Add New Student
+            </h1>
+
+            <p class="text-muted mb-0"
+               th:text="${student.id == null
+                    ? 'Register a new student in the system'
+                    : 'Update the student information below'}">
+                Register a new student in the system
+            </p>
+
+        </div>
+
+        <a href="/students"
+           class="btn btn-secondary">
+
+            ← Back to Student List
+
+        </a>
+
+    </div>
+
+
+    <!-- Error Message -->
+    <div th:if="${errorMessage}"
+         class="alert alert-danger alert-dismissible fade show"
+         role="alert">
+
+        <strong>Error:</strong>
+        <span th:text="${errorMessage}"></span>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+        </button>
+
+    </div>
+
+
+    <!-- Form Card -->
+    <div class="card form-card">
+
+        <!-- Card Header -->
+        <div class="card-header-custom">
+
+            <h4 class="mb-0"
+                th:text="${student.id == null
+                    ? 'Student Registration'
+                    : 'Update Student Information'}">
+
+                Student Registration
+
+            </h4>
+
+        </div>
+
+
+        <div class="card-body p-4">
+
+            <form th:action="@{/save-student}"
+                  th:object="${student}"
+                  method="post">
+
+
+                <!-- Hidden ID -->
+                <input type="hidden"
+                       th:field="*{id}">
+
+
+                <!-- Basic Information -->
+                <h5 class="section-title">
+                    Basic Information
+                </h5>
+
+                <div class="row">
+
+                    <!-- Matric Number -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Matric Number
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               th:field="*{matricNumber}"
+                               placeholder="Enter matric number"
+                               required>
+
+                    </div>
+
+
+                    <!-- First Name -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            First Name
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               th:field="*{firstName}"
+                               placeholder="Enter first name"
+                               required>
+
+                    </div>
+
+
+                    <!-- Last Name -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Last Name
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               th:field="*{lastName}"
+                               placeholder="Enter last name"
+                               required>
+
+                    </div>
+
+
+                    <!-- Gender -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Gender
+                            <span class="required">*</span>
+                        </label>
+
+                        <select class="form-select"
+                                th:field="*{gender}"
+                                required>
+
+                            <option value="">
+                                Select Gender
+                            </option>
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Age -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Age
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="number"
+                               class="form-control"
+                               th:field="*{age}"
+                               min="1"
+                               max="100"
+                               placeholder="Enter age"
+                               required>
+
+                    </div>
+
+
+                    <!-- Date of Birth -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Date of Birth
+                        </label>
+
+                        <input type="date"
+                               class="form-control"
+                               th:field="*{dateOfBirth}">
+
+                    </div>
+
+                </div>
+
+
+                <!-- Academic Information -->
+                <h5 class="section-title mt-4">
+                    Academic Information
+                </h5>
+
+                <div class="row">
+
+                    <!-- Department -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Department
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               th:field="*{department}"
+                               placeholder="Enter department"
+                               required>
+
+                    </div>
+
+
+                    <!-- Faculty -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Faculty
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               th:field="*{faculty}"
+                               placeholder="Enter faculty"
+                               required>
+
+                    </div>
+
+
+                    <!-- Level -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Level
+                            <span class="required">*</span>
+                        </label>
+
+                        <select class="form-select"
+                                th:field="*{level}"
+                                required>
+
+                            <option value="">
+                                Select Level
+                            </option>
+
+                            <option value="ND1">
+                                ND1
+                            </option>
+
+                            <option value="ND2">
+                                ND2
+                            </option>
+
+                            <option value="HND1">
+                                HND1
+                            </option>
+
+                            <option value="HND2">
+                                HND2
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- GPA -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            GPA
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="number"
+                               class="form-control"
+                               th:field="*{gpa}"
+                               min="0"
+                               max="5"
+                               step="0.01"
+                               placeholder="Enter GPA (0.00 - 5.00)"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Contact Information -->
+                <h5 class="section-title mt-4">
+                    Contact Information
+                </h5>
+
+                <div class="row">
+
+                    <!-- Phone -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Phone Number
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="tel"
+                               class="form-control"
+                               th:field="*{phoneNumber}"
+                               placeholder="Enter phone number"
+                               inputmode="numeric"
+                               pattern="[0-9]+"
+                               required>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Email
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="email"
+                               class="form-control"
+                               th:field="*{email}"
+                               placeholder="example@email.com"
+                               required>
+
+                    </div>
+
+
+                    <!-- Address -->
+                    <div class="col-12 mb-3">
+
+                        <label class="form-label">
+                            Address
+                            <span class="required">*</span>
+                        </label>
+
+                        <textarea class="form-control"
+                                  th:field="*{address}"
+                                  rows="3"
+                                  placeholder="Enter student's address"
+                                  required></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Action Buttons -->
+                <div class="action-buttons d-flex gap-2 flex-wrap">
+
+                    <button type="submit"
+                            class="btn btn-success"
+                            th:text="${student.id == null
+                                ? '✓ Save Student'
+                                : '✓ Update Student'}">
+
+                        ✓ Save Student
+
+                    </button>
+
+
+                    <a th:href="@{/students}"
+                       class="btn btn-secondary">
+
+                        ← Back to Student List
+
+                    </a>
+
+
+                    <a th:if="${student.id != null}"
+                       th:href="@{/view-student/{id}(id=${student.id})}"
+                       class="btn btn-primary">
+
+                        👁 View Student
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+
+</html>
