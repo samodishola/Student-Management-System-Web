@@ -72,6 +72,11 @@ public class StudentService {
         return studentRepository.findById(id).orElse(null);
     }
 
+    // Get Student by Matric Number
+    public Student getStudentByMatricNumber(String matricNumber) {
+        return studentRepository.findByMatricNumber(matricNumber).orElse(null);
+    }
+
     // Delete Student
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);

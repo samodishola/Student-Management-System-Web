@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Student Management System</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #0f172a,
+                            #1e3a8a
+                    );
+
+            padding: 20px;
+
+        }
+
+
+        /* =========================
+           LOGIN CONTAINER
+           ========================= */
+
+        .login-container {
+
+            width: 400px;
+
+            max-width: 100%;
+
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                    0 15px 40px
+                    rgba(0, 0, 0, 0.25);
+
+        }
+
+
+        /* =========================
+           HEADER
+           ========================= */
+
+        .login-icon {
+
+            text-align: center;
+
+            font-size: 45px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .login-container h1 {
+
+            text-align: center;
+
+            color: #1e3a8a;
+
+            margin-bottom: 8px;
+
+            font-size: 26px;
+
+        }
+
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 30px;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =========================
+           MESSAGES
+           ========================= */
+
+        .error {
+
+            color: #dc2626;
+
+            background: #fee2e2;
+
+            border: 1px solid #fecaca;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            margin-bottom: 15px;
+
+            font-size: 14px;
+
+        }
+
+
+        .logout-message {
+
+            color: #16a34a;
+
+            background: #dcfce7;
+
+            border: 1px solid #86efac;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            margin-bottom: 15px;
+
+            font-size: 14px;
+
+        }
+
+
+        .success-message {
+
+            color: #16a34a;
+
+            background: #dcfce7;
+
+            border: 1px solid #86efac;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            margin-bottom: 15px;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           FORM
+           ========================= */
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+            color: #333;
+
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.2s;
+
+        }
+
+
+        .form-group input:focus {
+
+            border-color: #1e3a8a;
+
+            box-shadow:
+                    0 0 0 3px
+                    rgba(30, 58, 138, 0.1);
+
+        }
+
+
+        /* =========================
+           LOGIN BUTTON
+           ========================= */
+
+        .login-btn {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #1e3a8a;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .login-btn:hover {
+
+            background: #172554;
+
+        }
+
+
+        /* =========================
+           FORGOT PASSWORD
+           ========================= */
+
+        .forgot-password {
+
+            text-align: center;
+
+            margin-top: 14px;
+
+        }
+
+
+        .forgot-password a {
+
+            color: #0d6efd;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+        }
+
+
+        .forgot-password a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =========================
+           REGISTER LINK
+           ========================= */
+
+        .register-link {
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #eeeeee;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .register-link a {
+
+            color: #6f42c1;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+        .register-link a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =========================
+           BACK TO PORTAL
+           ========================= */
+
+        .back-portal {
+
+            text-align: center;
+
+            margin-top: 18px;
+
+        }
+
+
+        .back-portal a {
+
+            color: #1e3a8a;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .back-portal a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #777;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 500px) {
+
+            .login-container {
+
+                padding: 30px 25px;
+
+            }
+
+            .login-container h1 {
+
+                font-size: 23px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+
+    <!-- Login Icon -->
+
+    <div class="login-icon">
+        🔐
+    </div>
+
+
+    <!-- Heading -->
+
+    <h1>
+        Student Management System
+    </h1>
+
+
+    <p class="subtitle">
+        Secure Login Portal
+    </p>
+
+
+    <!-- Error Message -->
+
+    <div th:if="${param.error}"
+         class="error">
+
+        Invalid username or password.
+
+    </div>
+
+
+    <!-- Logout Message -->
+
+    <div th:if="${param.logout}"
+         class="logout-message">
+
+        You have been logged out successfully.
+
+    </div>
+
+
+    <!-- Registration Success -->
+
+    <div th:if="${param.registered}"
+         class="success-message">
+
+        Student account created successfully.
+        Please login.
+
+    </div>
+
+
+    <!-- Password Reset Success -->
+
+    <div th:if="${param.reset}"
+         class="success-message">
+
+        Password reset successfully.
+        Please log in with your new password.
+
+    </div>
+
+
+    <!-- Login Form -->
+
+    <form th:action="@{/login}"
+          method="post">
+
+
+        <!-- Username -->
+
+        <div class="form-group">
+
+            <label for="username">
+                Username
+            </label>
+
+            <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    required>
+
+        </div>
+
+
+        <!-- Password -->
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required>
+
+        </div>
+
+
+        <!-- Login Button -->
+
+        <button
+                type="submit"
+                class="login-btn">
+
+            Login
+
+        </button>
+
+
+        <!-- Forgot Password -->
+
+        <div class="forgot-password">
+
+            <a th:href="@{/forgot-password}">
+                Forgot Password?
+            </a>
+
+        </div>
+
+
+    </form>
+
+
+    <!-- Student Registration -->
+
+    <div class="register-link">
+
+        Don't have a student account?
+
+        <br>
+
+        <a href="/student/register">
+            Create Student Account
+        </a>
+
+    </div>
+
+
+    <!-- Back to Main Portal -->
+
+    <div class="back-portal">
+
+        <a href="/">
+            ← Back to Main Portal
+        </a>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+
+        Student Management System © 2026
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

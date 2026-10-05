@@ -54,6 +54,14 @@
                 margin-left: 0 !important;
             }
 
+            .header-buttons form {
+                flex: 1;
+            }
+
+            .header-buttons form button {
+                width: 100%;
+            }
+
             /* Search */
             .search-form {
                 display: flex;
@@ -137,6 +145,8 @@
 
     <!-- Page Header -->
 
+    <!-- Page Header -->
+
     <div class="d-flex justify-content-between align-items-center mb-4 page-header">
 
         <div>
@@ -151,23 +161,34 @@
 
         </div>
 
-
         <div class="header-buttons">
 
+            <a href="/admin/dashboard"
+               class="btn btn-primary">
+
+                🏠 Dashboard
+
+            </a>
+
             <a href="/add-student"
-               class="btn btn-success">
+               class="btn btn-success ms-2">
 
                 + Add New Student
 
             </a>
 
+            <form th:action="@{/logout}"
+                  method="post"
+                  class="d-inline">
 
-            <a href="/"
-               class="btn btn-secondary ms-2">
+                <button type="submit"
+                        class="btn btn-danger ms-2">
 
-                Back to Home
+                    Logout
 
-            </a>
+                </button>
+
+            </form>
 
         </div>
 

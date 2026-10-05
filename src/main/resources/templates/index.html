@@ -5,7 +5,8 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Student Management System</title>
 
@@ -14,43 +15,223 @@
 
     <style>
 
-        /* General mobile improvements */
-        body {
-            overflow-x: hidden;
+        * {
+            box-sizing: border-box;
         }
 
-        /* Mobile screen */
-        @media (max-width: 576px) {
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #eef4ff, #ffffff);
+            display: flex;
+            flex-direction: column;
+        }
 
-            .container {
-                margin-top: 2rem !important;
-                padding-left: 15px;
-                padding-right: 15px;
+        /* =========================
+           NAVIGATION
+           ========================= */
+
+        .navbar-custom {
+            background: #0d6efd;
+            padding: 18px 7%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .brand {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .brand:hover {
+            color: white;
+        }
+
+
+        /* =========================
+           HERO SECTION
+           ========================= */
+
+        .hero {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 70px 20px;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1050px;
+            text-align: center;
+        }
+
+        .welcome-text {
+            color: #0d6efd;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            color: #172b4d;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #0d6efd;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 19px;
+            line-height: 1.7;
+            color: #6c757d;
+        }
+
+
+        /* =========================
+           PORTAL CARDS
+           ========================= */
+
+        .portal-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .portal-card {
+            width: 300px;
+            min-height: 285px;
+            background: white;
+            border-radius: 16px;
+            padding: 35px 28px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            border: 1px solid #eeeeee;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .portal-icon {
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+
+        .portal-card h3 {
+            color: #172b4d;
+            font-size: 23px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .portal-card p {
+            color: #6c757d;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           BUTTONS
+           ========================= */
+
+        .portal-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .admin-btn {
+            background: #0d6efd;
+            color: white;
+        }
+
+        .admin-btn:hover {
+            background: #0b5ed7;
+            color: white;
+        }
+
+        .student-btn {
+            background: #198754;
+            color: white;
+        }
+
+        .student-btn:hover {
+            background: #157347;
+            color: white;
+        }
+
+        .register-btn {
+            background: #6f42c1;
+            color: white;
+        }
+
+        .register-btn:hover {
+            background: #59339d;
+            color: white;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        .footer {
+            text-align: center;
+            padding: 22px 15px;
+            background: #f8f9fa;
+            border-top: 1px solid #e5e5e5;
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer strong {
+            color: #0d6efd;
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 768px) {
+
+            .hero {
+                padding: 50px 20px;
             }
 
-            /* Main heading */
-            .display-4 {
-                font-size: 2.2rem;
-                line-height: 1.2;
+            .hero h1 {
+                font-size: 38px;
             }
 
-            .lead {
-                font-size: 1rem;
+            .hero-description {
+                font-size: 17px;
             }
 
-            /* Statistics cards */
-            .row.g-4 {
-                margin-bottom: 2rem !important;
-            }
-
-            .card-body {
-                padding: 1.25rem;
-            }
-
-            /* Quick Actions */
-            .btn-lg {
+            .portal-card {
                 width: 100%;
-                margin: 0 !important;
+                max-width: 350px;
             }
 
         }
@@ -60,178 +241,180 @@
 </head>
 
 
-<body class="bg-light">
+<body>
 
 
-<div class="container mt-5">
+<!-- =========================
+     NAVIGATION
+     ========================= -->
+
+<nav class="navbar-custom">
+
+    <a href="/" class="brand">
+        🎓 Student Management System
+    </a>
+
+</nav>
 
 
-    <!-- Header -->
+<!-- =========================
+     MAIN HERO SECTION
+     ========================= -->
 
-    <div class="text-center mb-5">
+<main class="hero">
 
-        <h1 class="display-4 fw-bold text-primary">
+    <div class="hero-content">
 
-            Student Management System
+        <div class="welcome-text">
+            Welcome to the Portal
+        </div>
 
+
+        <h1>
+            Student <span>Management System</span>
         </h1>
 
-        <p class="lead text-muted">
 
-            Manage student records easily and efficiently
+        <p class="hero-description">
+
+            A secure and efficient platform for managing
+            student records, academic information, and
+            student accounts.
 
         </p>
 
-    </div>
+
+        <!-- =========================
+             PORTAL OPTIONS
+             ========================= -->
+
+        <div class="portal-container">
 
 
-    <!-- Statistics -->
+            <!-- ADMIN PORTAL -->
 
-    <div class="row g-4 mb-5">
+            <div class="portal-card">
 
+                <div>
 
-        <!-- Total Students -->
+                    <div class="portal-icon">
+                        🔐
+                    </div>
 
-        <div class="col-md-4">
+                    <h3>
+                        Admin Portal
+                    </h3>
 
-            <div class="card shadow-sm text-center h-100">
+                    <p>
 
-                <div class="card-body">
-
-                    <h5 class="card-title text-primary">
-
-                        Total Students
-
-                    </h5>
-
-                    <h2 class="display-5 fw-bold"
-                        th:text="${totalStudents}">
-
-                        0
-
-                    </h2>
-
-                    <p class="text-muted mb-0">
-
-                        Registered Students
+                        Access the administrative dashboard
+                        to manage students, records, and
+                        academic reports.
 
                     </p>
 
                 </div>
 
-            </div>
+                <a href="/login"
+                   class="portal-btn admin-btn">
 
-        </div>
-
-
-        <!-- Male Students -->
-
-        <div class="col-md-4">
-
-            <div class="card shadow-sm text-center h-100">
-
-                <div class="card-body">
-
-                    <h5 class="card-title text-info">
-
-                        Male Students
-
-                    </h5>
-
-                    <h2 class="display-5 fw-bold"
-                        th:text="${maleStudents}">
-
-                        0
-
-                    </h2>
-
-                    <p class="text-muted mb-0">
-
-                        Male Students
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Female Students -->
-
-        <div class="col-md-4">
-
-            <div class="card shadow-sm text-center h-100">
-
-                <div class="card-body">
-
-                    <h5 class="card-title text-danger">
-
-                        Female Students
-
-                    </h5>
-
-                    <h2 class="display-5 fw-bold"
-                        th:text="${femaleStudents}">
-
-                        0
-
-                    </h2>
-
-                    <p class="text-muted mb-0">
-
-                        Female Students
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- Quick Actions -->
-
-    <div class="card shadow-sm">
-
-        <div class="card-body text-center">
-
-            <h3 class="mb-4">
-
-                Quick Actions
-
-            </h3>
-
-
-            <div class="d-grid gap-2 d-sm-flex justify-content-center">
-
-                <a href="/add-student"
-                   class="btn btn-success btn-lg">
-
-                    + Add New Student
-
-                </a>
-
-                <a href="/students"
-                   class="btn btn-primary btn-lg">
-
-                    View All Students
+                    Admin Login
 
                 </a>
 
             </div>
 
+
+            <!-- STUDENT PORTAL -->
+
+            <div class="portal-card">
+
+                <div>
+
+                    <div class="portal-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Student Portal
+                    </h3>
+
+                    <p>
+
+                        Registered students can securely
+                        access their personal and academic
+                        information.
+
+                    </p>
+
+                </div>
+
+                <a href="/login"
+                   class="portal-btn student-btn">
+
+                    Student Login
+
+                </a>
+
+            </div>
+
+
+            <!-- CREATE ACCOUNT -->
+
+            <div class="portal-card">
+
+                <div>
+
+                    <div class="portal-icon">
+                        📝
+                    </div>
+
+                    <h3>
+                        New Student?
+                    </h3>
+
+                    <p>
+
+                        Don't have a student account?
+                        Create an account to access
+                        the student portal.
+
+                    </p>
+
+                </div>
+
+                <a href="/student/register"
+                   class="portal-btn register-btn">
+
+                    Create Student Account
+
+                </a>
+
+            </div>
+
+
         </div>
 
     </div>
 
+</main>
 
-</div>
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer class="footer">
+
+    <div>
+        © 2026 <strong>Student Management System</strong>
+    </div>
+
+    <div>
+        Computer Science Department
+    </div>
+
+</footer>
 
 
 </body>

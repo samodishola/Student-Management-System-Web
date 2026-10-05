@@ -14,9 +14,82 @@
 
   <style>
 
+    /* ==============================
+       GENERAL PAGE
+    ============================== */
+
     body {
       background-color: #f5f7fb;
+      color: #212529;
     }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+
+    /* ==============================
+       ADMIN NAVIGATION
+    ============================== */
+
+    .admin-navbar {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: white;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+    }
+
+    .admin-navbar h5 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .admin-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 9px 14px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: 0.2s ease;
+    }
+
+    .admin-nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+
+    .admin-logout-btn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .admin-logout-btn:hover {
+      background-color: #bb2d3b;
+    }
+
+
+    /* ==============================
+       PAGE HEADER
+    ============================== */
 
     .page-header {
       margin-bottom: 30px;
@@ -25,46 +98,103 @@
     .page-title {
       color: #0d6efd;
       font-weight: 700;
+      font-size: 2rem;
     }
+
+    .page-subtitle {
+      color: #6c757d;
+      margin-bottom: 0;
+    }
+
+    .back-btn {
+      white-space: nowrap;
+    }
+
+
+    /* ==============================
+       STUDENT CARD
+    ============================== */
 
     .student-card {
       border: none;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       overflow: hidden;
+      background-color: white;
     }
 
     .card-header-custom {
-      background: #0d6efd;
+      background: linear-gradient(135deg, #0d6efd, #2563eb);
       color: white;
-      padding: 18px 25px;
+      padding: 20px 25px;
     }
+
+    .card-header-custom h4 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .card-body-custom {
+      padding: 30px;
+    }
+
+
+    /* ==============================
+       SECTION TITLES
+    ============================== */
 
     .section-title {
       color: #0d6efd;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       border-bottom: 2px solid #e9ecef;
-      padding-bottom: 8px;
+      padding-bottom: 10px;
+    }
+
+
+    /* ==============================
+       STUDENT INFORMATION
+    ============================== */
+
+    .info-box {
+      background-color: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      min-height: 75px;
     }
 
     .info-label {
+      font-size: 0.85rem;
       font-weight: 600;
-      color: #495057;
-      margin-bottom: 4px;
+      color: #6c757d;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
 
     .info-value {
       color: #212529;
-      margin-bottom: 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0;
+      overflow-wrap: anywhere;
     }
 
     .matric-number {
       font-weight: 700;
       color: #0d6efd;
+      font-size: 1.05rem;
     }
 
+
+    /* ==============================
+       BADGES
+    ============================== */
+
     .gpa-badge {
+      display: inline-block;
       background-color: #198754;
       color: white;
       padding: 6px 12px;
@@ -73,6 +203,7 @@
     }
 
     .level-badge {
+      display: inline-block;
       background-color: #0dcaf0;
       color: #000;
       padding: 6px 12px;
@@ -80,13 +211,39 @@
       font-weight: 600;
     }
 
+
+    /* ==============================
+       ACTION BUTTONS
+    ============================== */
+
     .action-buttons {
       border-top: 1px solid #dee2e6;
-      padding-top: 20px;
-      margin-top: 10px;
+      padding-top: 25px;
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    /* Mobile Responsive Design */
+    .action-buttons .btn {
+      padding: 9px 16px;
+      font-weight: 500;
+    }
+
+
+    /* ==============================
+       DELETE MODAL
+    ============================== */
+
+    .delete-warning-icon {
+      font-size: 45px;
+    }
+
+
+    /* ==============================
+       MOBILE RESPONSIVE DESIGN
+    ============================== */
+
     @media (max-width: 768px) {
 
       body {
@@ -94,13 +251,40 @@
       }
 
       .container {
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 25px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        padding-top: 20px !important;
         padding-bottom: 25px !important;
       }
 
+
+      /* Admin Navigation */
+
+      .admin-navbar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 18px 15px;
+      }
+
+      .admin-navbar h5 {
+        font-size: 1rem;
+      }
+
+      .admin-nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .admin-nav-link,
+      .admin-logout-btn {
+        font-size: 0.9rem;
+        padding: 8px 11px;
+      }
+
+
       /* Page Header */
+
       .page-header {
         flex-direction: column;
         align-items: flex-start !important;
@@ -109,67 +293,72 @@
       }
 
       .page-title {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
       }
 
-      .page-header p {
+      .page-subtitle {
         font-size: 0.9rem;
       }
 
-      .page-header > a {
+      .back-btn {
         width: 100%;
         text-align: center;
       }
 
+
       /* Student Card */
+
       .student-card {
         border-radius: 10px;
       }
 
       .card-header-custom {
-        padding: 15px 18px;
+        padding: 16px 18px;
       }
 
       .card-header-custom h4 {
         font-size: 1.1rem;
       }
 
-      .card-body {
+      .card-body-custom {
         padding: 20px !important;
       }
 
+
       /* Section Titles */
+
       .section-title {
         font-size: 1.05rem;
         margin-bottom: 18px;
       }
 
+
       /* Information */
+
+      .info-box {
+        padding: 12px 14px;
+        margin-bottom: 14px;
+      }
+
       .info-label {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
 
       .info-value {
         font-size: 0.95rem;
-        margin-bottom: 17px;
-        overflow-wrap: anywhere;
       }
 
+
       /* Action Buttons */
+
       .action-buttons {
         flex-direction: column;
-        gap: 10px !important;
+        gap: 10px;
       }
 
       .action-buttons .btn {
         width: 100%;
         text-align: center;
-      }
-
-      /* Badges */
-      .gpa-badge,
-      .level-badge {
-        display: inline-block;
       }
 
     }
@@ -178,138 +367,241 @@
 
 </head>
 
+
 <body>
 
-<div class="container py-5">
 
-  <!-- Page Header -->
+<div class="container py-5 main-container">
+
+
+  <!-- ==============================
+       ADMIN NAVIGATION
+  ============================== -->
+
+  <nav class="admin-navbar">
+
+    <h5>
+      Student Management System
+    </h5>
+
+    <div class="admin-nav-links">
+
+      <a href="/admin/dashboard"
+         class="admin-nav-link">
+        🏠 Dashboard
+      </a>
+
+      <a href="/students"
+         class="admin-nav-link">
+        👨‍🎓 Students
+      </a>
+
+      <form th:action="@{/logout}"
+            method="post"
+            class="d-inline">
+
+        <button type="submit"
+                class="admin-logout-btn">
+          Logout
+        </button>
+
+      </form>
+
+    </div>
+
+  </nav>
+
+
+  <!-- ==============================
+       PAGE HEADER
+  ============================== -->
+
   <div class="page-header d-flex justify-content-between align-items-center">
 
     <div>
+
       <h1 class="page-title mb-1">
         Student Details
       </h1>
 
-      <p class="text-muted mb-0">
+      <p class="page-subtitle">
         View complete information about this student
       </p>
+
     </div>
 
-    <a href="/students" class="btn btn-secondary">
+
+    <a href="/students"
+       class="btn btn-secondary back-btn">
+
       ← Back to Student List
+
     </a>
 
   </div>
 
 
-  <!-- Student Card -->
+  <!-- ==============================
+       STUDENT CARD
+  ============================== -->
+
   <div class="card student-card">
 
+
     <!-- Card Header -->
+
     <div class="card-header-custom">
 
-      <h4 class="mb-0">
-        Student Information
+      <h4>
+        👨‍🎓 Student Information
       </h4>
 
     </div>
 
 
-    <div class="card-body p-4">
+    <div class="card-body card-body-custom">
 
-      <!-- Basic Information -->
+
+      <!-- ==============================
+           BASIC INFORMATION
+      ============================== -->
+
       <h5 class="section-title">
         Basic Information
       </h5>
 
+
       <div class="row">
 
+
+        <!-- Matric Number -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            Matric Number
-          </div>
+          <div class="info-box">
 
-          <div class="info-value matric-number"
-               th:text="${student.matricNumber}">
+            <div class="info-label">
+              Matric Number
+            </div>
+
+            <div class="info-value matric-number"
+                 th:text="${student.matricNumber}">
+            </div>
+
           </div>
 
         </div>
 
 
+        <!-- Student ID -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            Student ID
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.id}">
+            <div class="info-label">
+              Student ID
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.id}">
+            </div>
+
           </div>
 
         </div>
 
 
+        <!-- First Name -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            First Name
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.firstName}">
+            <div class="info-label">
+              First Name
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.firstName}">
+            </div>
+
           </div>
 
         </div>
 
 
+        <!-- Last Name -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            Last Name
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.lastName}">
+            <div class="info-label">
+              Last Name
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.lastName}">
+            </div>
+
           </div>
 
         </div>
 
 
+        <!-- Gender -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            Gender
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.gender}">
+            <div class="info-label">
+              Gender
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.gender}">
+            </div>
+
           </div>
 
         </div>
 
 
+        <!-- Age -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            Age
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.age}">
+            <div class="info-label">
+              Age
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.age}">
+            </div>
+
           </div>
 
         </div>
 
 
+        <!-- Date of Birth -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            Date of Birth
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.dateOfBirth}">
+            <div class="info-label">
+              Date of Birth
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.dateOfBirth}">
+            </div>
+
           </div>
 
         </div>
@@ -317,67 +609,96 @@
       </div>
 
 
-      <!-- Academic Information -->
+      <!-- ==============================
+           ACADEMIC INFORMATION
+      ============================== -->
+
       <h5 class="section-title mt-4">
         Academic Information
       </h5>
 
+
       <div class="row">
 
-        <div class="col-md-6">
 
-          <div class="info-label">
-            Department
-          </div>
-
-          <div class="info-value"
-               th:text="${student.department}">
-          </div>
-
-        </div>
-
+        <!-- Department -->
 
         <div class="col-md-6">
 
-          <div class="info-label">
-            Faculty
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.faculty}">
-          </div>
+            <div class="info-label">
+              Department
+            </div>
 
-        </div>
-
-
-        <div class="col-md-6">
-
-          <div class="info-label">
-            Level
-          </div>
-
-          <div class="info-value">
-
-                        <span class="level-badge"
-                              th:text="${student.level}">
-                        </span>
+            <div class="info-value"
+                 th:text="${student.department}">
+            </div>
 
           </div>
 
         </div>
 
 
+        <!-- Faculty -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            GPA
+          <div class="info-box">
+
+            <div class="info-label">
+              Faculty
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.faculty}">
+            </div>
+
           </div>
 
-          <div class="info-value">
+        </div>
 
-                        <span class="gpa-badge"
-                              th:text="${student.gpa}">
-                        </span>
+
+        <!-- Level -->
+
+        <div class="col-md-6">
+
+          <div class="info-box">
+
+            <div class="info-label">
+              Level
+            </div>
+
+            <div class="info-value">
+
+                            <span class="level-badge"
+                                  th:text="${student.level}">
+                            </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- GPA -->
+
+        <div class="col-md-6">
+
+          <div class="info-box">
+
+            <div class="info-label">
+              GPA
+            </div>
+
+            <div class="info-value">
+
+                            <span class="gpa-badge"
+                                  th:text="${student.gpa}">
+                            </span>
+
+            </div>
 
           </div>
 
@@ -386,47 +707,70 @@
       </div>
 
 
-      <!-- Contact Information -->
+      <!-- ==============================
+           CONTACT INFORMATION
+      ============================== -->
+
       <h5 class="section-title mt-4">
         Contact Information
       </h5>
 
+
       <div class="row">
 
+
+        <!-- Phone -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            Phone Number
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.phoneNumber}">
+            <div class="info-label">
+              Phone Number
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.phoneNumber}">
+            </div>
+
           </div>
 
         </div>
 
 
+        <!-- Email -->
+
         <div class="col-md-6">
 
-          <div class="info-label">
-            Email
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.email}">
+            <div class="info-label">
+              Email
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.email}">
+            </div>
+
           </div>
 
         </div>
 
+
+        <!-- Address -->
 
         <div class="col-12">
 
-          <div class="info-label">
-            Address
-          </div>
+          <div class="info-box">
 
-          <div class="info-value"
-               th:text="${student.address}">
+            <div class="info-label">
+              Address
+            </div>
+
+            <div class="info-value"
+                 th:text="${student.address}">
+            </div>
+
           </div>
 
         </div>
@@ -434,26 +778,36 @@
       </div>
 
 
-      <!-- Action Buttons -->
-      <div class="action-buttons d-flex gap-2">
+      <!-- ==============================
+           ACTION BUTTONS
+      ============================== -->
+
+      <div class="action-buttons">
+
+
+        <!-- Edit -->
 
         <a th:href="@{/edit-student/{id}(id=${student.id})}"
            class="btn btn-warning">
 
-          ✏ Edit Student
+          ✏️ Edit Student
 
         </a>
 
+
+        <!-- Delete -->
 
         <button type="button"
                 class="btn btn-danger"
                 data-bs-toggle="modal"
                 data-bs-target="#deleteModal">
 
-          🗑 Delete Student
+          🗑️ Delete Student
 
         </button>
 
+
+        <!-- Back -->
 
         <a href="/students"
            class="btn btn-secondary">
@@ -464,16 +818,17 @@
 
       </div>
 
+
     </div>
 
   </div>
 
 </div>
 
-</div>
 
-
-<!-- Delete Confirmation Modal -->
+<!-- ==============================
+     DELETE CONFIRMATION MODAL
+============================== -->
 
 <div class="modal fade"
      id="deleteModal"
@@ -481,9 +836,12 @@
      aria-labelledby="deleteModalLabel"
      aria-hidden="true">
 
+
   <div class="modal-dialog modal-dialog-centered">
 
+
     <div class="modal-content">
+
 
       <!-- Modal Header -->
 
@@ -509,11 +867,12 @@
 
       <div class="modal-body text-center">
 
+
         <div class="mb-3">
 
-          <span style="font-size: 45px;">
-            ⚠️
-          </span>
+                    <span class="delete-warning-icon">
+                        ⚠️
+                    </span>
 
         </div>
 
@@ -569,11 +928,12 @@
         <a th:href="@{/delete-student/{id}(id=${student.id})}"
            class="btn btn-danger">
 
-          🗑 Delete Student
+          🗑️ Delete Student
 
         </a>
 
       </div>
+
 
     </div>
 
@@ -582,7 +942,9 @@
 </div>
 
 
-<!-- Bootstrap JavaScript -->
+<!-- ==============================
+     BOOTSTRAP JAVASCRIPT
+============================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
 </script>
@@ -591,4 +953,3 @@
 </body>
 
 </html>
-
