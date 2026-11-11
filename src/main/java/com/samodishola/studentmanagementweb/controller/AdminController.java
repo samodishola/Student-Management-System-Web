@@ -28,11 +28,15 @@ public class AdminController {
         long maleStudents = studentService.getMaleStudents();
         long femaleStudents = studentService.getFemaleStudents();
 
-        // Calculate average GPA
+
+// Calculate average GPA, ignoring students with missing GPA values
         double averageGpa = students.stream()
-                .mapToDouble(Student::getGpa)
+                .map(Student::getGpa)
+                .filter(gpa -> gpa != null)
+                .mapToDouble(Double::doubleValue)
                 .average()
                 .orElse(0.0);
+
 
         // Add statistics to the dashboard
         model.addAttribute("totalStudents", totalStudents);
